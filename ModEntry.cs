@@ -74,6 +74,8 @@ public sealed class ModEntry : SimpleMod {
 		typeof(QuickLaunchCard),
 		typeof(DualShieldCard),
         typeof(DriftCard),
+
+		typeof(PilotExeCard)
 	];
 
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [

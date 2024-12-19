@@ -6,3 +6,4 @@
 /home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/bin/release/net8.0/Pilot.deps.json
 /home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/bin/release/net8.0/Pilot.dll
 /home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.dll
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.sourcelink.json

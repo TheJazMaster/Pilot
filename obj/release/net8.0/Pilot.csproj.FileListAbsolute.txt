@@ -1,0 +1,8 @@
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.csproj.AssemblyReference.cache
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.GeneratedMSBuildEditorConfig.editorconfig
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.AssemblyInfoInputs.cache
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.AssemblyInfo.cs
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.csproj.CoreCompileInputs.cache
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/bin/release/net8.0/Pilot.deps.json
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/bin/release/net8.0/Pilot.dll
+/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/obj/release/net8.0/Pilot.dll

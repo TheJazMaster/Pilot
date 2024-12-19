@@ -1,0 +1,167 @@
+{
+    "character": {
+        "name": "Pilot",
+        "description": [
+            "<c=BD0B45>PILOT</c>",
+            "A strange spaceman from a strange space sector. Takes control of his own ship, the <c=downside>Campanella</c>, to <c=keyword>block shots</c> for you."
+        ]
+    },
+    "action": {
+        "goCampanella": {
+            "name": "    Go, Campanella!",
+            "description": "Launch the <c=downside>Campanella</c> from the missile bay. If it's on the field, move it in front of your missile bay and gain 1 <c=status>P. SHIELD</c> instead."
+        },
+        "addCherryPicked": {
+            "name": "Apply cherry-picked",
+            "description": "Make a card <c=cardtrait>cherry-picked</c>.",
+            "showCardText": "Added <c=cardtrait>cherry-picked</c>!",
+            "cardSelectText": "Select a card to add <c=cardtrait>cherry-picked</c> to, forever.\n(<c=cardtrait>Cherry-picked</c> cards <c=cardtrait>unexhaust</c> when the <c=downside>Campanella</c> is destroyed!)"
+        }
+    },
+    "midrow": {
+        "campanella": {
+            "name": "Campanella",
+            "description": "If this would collide with a <c=midrow>midrow object</c>, it instead moves 1 space to the right of it."
+        }
+    },
+    "trait": {
+        "cherryPicked": {
+            "name": "Cherry-Picked",
+            "description": "Returns from the <c=cardtrait>exhaust</c> pile to your draw pile when the <c=downside>Campanella</c> is destroyed."
+        }
+    },
+    "status": {
+        "PAce": {
+            "name": "P. Ace",
+            "description": "Gain {0} <c=status>SWERVE</c> every turn."
+        },
+        "PShield": {
+            "name": "P. Shield",
+            "description": "The next <c=keyword>{0}</c> times the <c=downside>Campanella</c> would be shot, it negates it and then moves 1 space to the right."
+        },
+        "Coffee": {
+            "name": "Coffee",
+            "description": "Increase the range of <c=status>SWERVE</c> by <c=keyword>{0}</c>. <c=downside>Removed when the Campanella is destroyed.</c>"
+        },
+        "Swerve": {
+            "name": "Swerve",
+            "description": "If an incoming shot would hit you but miss the <c=downside>Campanella</c> by 1 space, it moves to block it. <c=downside>Decrease by 1 after triggering.</c>"
+        },
+        "RunAndGun": {
+            "name": "Run And Gun",
+            "description": "The <c=downside>Campanella</c> fires at the opponent for <c=keyword>{0}</c> damage immediately after every move it makes. <c=downside>Removed when the Campanella is destroyed.</c>"
+        }
+    },
+    "artifact": {
+        "CaffeinePill": {
+            "name": "CAFFEINE PILL",
+            "description": "Gain 1 <c=status>COFFEE</c> and 1 <c=status>SWERVE</c> on the first turn."
+        },
+        "CherryPie": {
+            "name": "CHERRY PIE",
+            "description": "Choose a card with <c=cardtrait>exhaust</c> in your deck. It gains <c=cardtrait>cherry-picked</c>."
+        },
+        "YoYo": {
+            "name": "YO-YO",
+            "description": "Every turn, if the <c=downside>Campanella</c> is not in front of your ship, it moves 1 space towards it."
+        },
+        "NailGun": {
+            "name": "NAIL GUN",
+            "description": "The <c=downside>Campanella</c> fires at the opponent for 1 damage every turn."
+        },
+        "SeeingRed": {
+            "name": "SEEING RED",
+            "description": "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>Cards that don't <c=cardtrait>exhaust</c> gain <c=cardtrait>exhaust</c> and <c=cardtrait>cherry-picked</c>.</c>"
+        },
+        "Isabell": {
+            "name": "ISABELL",
+            "description": "You may have up to 2 <c=downside>Campanellas</c> on the field at once. When one is destroyed, the other is as well. When launching the <c=downside>Campanella</c>, gain 1 <c=status>P. SHIELD</c>."
+        }
+    },
+    "card": {
+        "Blastoff": {
+            "name": "Blastoff"
+        },
+        "SwerveShot": {
+            "name": "Swerve Shot"
+        },
+        "Rally": {
+            "name": "Rally"
+        },
+        "BootSystem": {
+            "name": "Boot System"
+        },
+        "Swivel": {
+            "name": "Swivel"
+        },
+        "CupOJoe": {
+            "name": "Cup 'o Joe"
+        },
+        "QuickLaunch": {
+            "name": "Quick Launch"
+        },
+        "DualShield": {
+            "name": "Dual Shield"
+        },
+        "Drift": {
+            "name": "Drift"
+        },
+        "TheTrialOfArrow": {
+            "name": "The Trial Of Arrow",
+            "description": "<c=downside>Campanella</c> fires for 4 piercing damage, then is destroyed."
+        },
+        "TheTrialOfBomb": {
+            "name": "The Trial Of Bomb",
+            "description": "Destroy <c=downside>Campanella</c> and replace it with a <c=drone>big space mine</c>."
+        },
+        "TheTrialOfStone": {
+            "name": "The Trial Of Stone",
+            "description": "Destroy <c=downside>Campanella</c> and replace it with 3 <c=drone>asteroids</c>."
+        },
+        "HotJava": {
+            "name": "Hot Java"
+        },
+        "Vengeance": {
+            "name": "Vengeance",
+            "description": {
+                "None": "Gain a <c=card>Take That!</c>",
+                "A": "Gain a <c=card>Take That!</c>",
+                "B": "Gain a <c=card>Take That! B</c>."
+            }
+        },
+        "CoffeeBreak": {
+            "name": "Coffee Break",
+            "description": {
+                "None": "Gain 1 <c=status>coffee</c>. <c=cardtrait>Exhausted</c> when <c=downside>Campanella</c> is launched.",
+                "A": "Gain 1 <c=status>coffee</c> and <c=status>swerve</c>. <c=cardtrait>Exhausted</c> when <c=downside>Campanella</c> is launched.",
+                "B": "Gain 2 <c=status>coffee</c>. <c=cardtrait>Exhausted</c> when <c=downside>Campanella</c> is launched."
+            }
+        },
+        "MoonShardAlloy": {
+            "name": "Moon Drop Alloy"
+        },
+        "KeepPace": {
+            "name": "Keep Pace"
+        },
+        "Channel": {
+            "name": "Channel",
+            "description": {
+                "None": "Convert all <c=status>shield</c> into <c=status>P. shield</c> and all <c=status>evade</c> into <c=status>swerve</c>.",
+                "A": "Convert all <c=status>shield</c> into <c=status>P. shield</c> and all <c=status>evade</c> into <c=status>swerve</c>. Gain 1 <c=status>coffee</c>.",
+                "B": "Gain <c=status>P. shield</c> equal to your <c=status>shield</c> and <c=status>swerve</c> equal to your <c=status>evade</c>."
+            }
+        },
+        "ReflexiveCoating": {
+            "name": "Reflexive Coating"
+        },
+        "SharingIsCaring": {
+            "name": "Sharing Is Caring"
+        },
+        "RunAndGun": {
+            "name": "Run and Gun"
+        },
+        "TakeThat": {
+            "name": "Take That!"
+        }
+    }
+}

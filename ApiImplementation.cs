@@ -17,7 +17,8 @@ public class ApiImplementation : IPilotApi
 
 	public List<Campanella> GetCampanellas(Combat c, bool? targetPlayer = null) => CampanellaManager.GetCampanellas(c, targetPlayer);
 	public bool IsCampanellaInvincible(State s, Combat c, bool targetPlayer) => CampanellaManager.IsCampanellaInvincible(s, c, targetPlayer);
-	public bool IsCampanellaAllowed(State s, Combat c) => CampanellaManager.IsCampanellaAllowed(s, c);
+	public bool IsCampanellaAllowed(State s, Combat c) => CampanellaManager.CampanellaAllowedCount(s, c) > 0;
+	public int CampanellaAllowedCount(State s, Combat c) => CampanellaManager.CampanellaAllowedCount(s, c);
 	public int GetCampanellasSwerveDistance(Ship s) => CampanellaManager.GetCampanellasSwerveDistance(s);
 	public List<int> DestroyCampanella(State s, Combat c, bool? targetPlayer = null, Campanella? campanella = null) => CampanellaManager.DestroyCampanella(s, c, targetPlayer, campanella);
 	public bool MoveCampanella(State s, Combat c, int x, bool blastIntruders = false, bool? targetPlayer = null, Campanella? campanella = null) => CampanellaManager.MoveCampanella(s, c, x, blastIntruders, targetPlayer, campanella);

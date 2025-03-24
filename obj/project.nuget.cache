@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8f9DQkOK3uE=",
+  "dgSpecHash": "R0g8ohpdmqc=",
   "success": true,
   "projectFilePath": "/home/thejazmaster/Games/Nickel/ModWorkingDirectory/Pilot/Pilot.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,9 @@
     "/home/thejazmaster/.nuget/packages/monogame.framework.desktopgl/3.8.1.303/monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
     "/home/thejazmaster/.nuget/packages/nanoray.extractsinglefileapplicationresourcetask/1.0.0/nanoray.extractsinglefileapplicationresourcetask.1.0.0.nupkg.sha512",
     "/home/thejazmaster/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
-    "/home/thejazmaster/.nuget/packages/nickel.modbuildconfig/1.2.3/nickel.modbuildconfig.1.2.3.nupkg.sha512"
+    "/home/thejazmaster/.nuget/packages/nickel.modbuildconfig/1.2.3/nickel.modbuildconfig.1.2.3.nupkg.sha512",
+    "/home/thejazmaster/.nuget/packages/microsoft.netcore.app.ref/8.0.13/microsoft.netcore.app.ref.8.0.13.nupkg.sha512",
+    "/home/thejazmaster/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.13/microsoft.aspnetcore.app.ref.8.0.13.nupkg.sha512"
   ],
   "logs": []
 }

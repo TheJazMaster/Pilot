@@ -2,7 +2,7 @@
     "character": {
         "name": "Pilot",
         "description": [
-            "<c=BD0B45>PILOT</c>",
+            "<c=fe626e>PILOT</c>",
             "A strange spaceman from a strange space sector. Takes control of his own ship, the <c=downside>Campanella</c>, to <c=keyword>block shots</c> for you."
         ]
     },
@@ -21,7 +21,7 @@
     "midrow": {
         "campanella": {
             "name": "Campanella",
-            "description": "If this would collide with a <c=midrow>midrow object</c>, it instead moves 1 space to the right of it."
+            "description": "If this would collide with an adjacent <c=midrow>midrow object</c>, it instead moves 1 space to the right of it."
         }
     },
     "trait": {
@@ -55,7 +55,7 @@
     "artifact": {
         "CaffeinePill": {
             "name": "CAFFEINE PILL",
-            "description": "Gain 1 <c=status>COFFEE</c> and 1 <c=status>SWERVE</c> on the first turn."
+            "description": "Gain 1 <c=status>COFFEE</c> on the first turn. Whenever you gain <c=status>COFFEE</c>, gain 1 <c=status>P. SHIELD</c>."
         },
         "CherryPie": {
             "name": "CHERRY PIE",

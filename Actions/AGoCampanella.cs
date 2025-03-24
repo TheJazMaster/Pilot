@@ -9,29 +9,53 @@ namespace TheJazMaster.Pilot.Actions;
 
 public class AGoCampanella : DynamicWidthCardAction
 {
+	public bool targetPlayer = false;
+	public int? i;
 
 	public override void Begin(G g, State s, Combat c)
 	{
-		if (!CampanellaManager.IsCampanellaAllowed(s, c)) {
+		Ship ship = targetPlayer ? c.otherShip : s.ship;
+
+		if (i.HasValue) {
+
+		}
+
+		int allowedCount = CampanellaManager.CampanellaAllowedCount(s, c);
+		if (allowedCount == 0) {
 			c.QueueImmediate(new ARecenterCampanella());
 			c.QueueImmediate(new AStatus {
 				status = ModEntry.Instance.PShieldStatus,
 				statusAmount = 1,
-				targetPlayer = true
+				targetPlayer = !targetPlayer
 			});
-		} else {
-			bool second = CampanellaManager.GetCampanellas(c).Count > 0;
-			c.QueueImmediate(new ASpawn {
-				thing = new Campanella {
-					skin = second ? ModEntry.Instance.Campanella2Sprite : ModEntry.Instance.CampanellaSprite,
-					color = second ? new("C8C8C8") : new("fe626e"),
-					bubbleSkin = second ? ModEntry.Instance.Campanella2Shield : ModEntry.Instance.CampanellaShield,
-				},
-				fromPlayer = true,
-				multiBayVolley = true
-			});
+		}
+		else {
+			Stack<int> indices = [];
+			for (int i = 0, j = 0; i < ship.parts.Count && allowedCount - j > 0; i++) {
+				Part part = ship.parts[i];
+				if (!part.active || part.type != PType.missiles) continue;
+				
+				indices.Push(i);
+				j++;
+			}
+
+			int cNum = 0;
+			while (indices.Count > 0) {
+				bool second = CampanellaManager.GetCampanellas(c).Count + indices.Count > 1;
+				c.QueueImmediate(new ASpawn {
+					thing = new Campanella {
+						altSkin = second,
+						color = second ? new("C8C8C8") : new("fe626e"),
+						altBubbleSkin = second,
+					},
+					fromX = indices.Pop(),
+					fromPlayer = !targetPlayer,
+					multiBayVolley = true
+				});
+				cNum++;
+			}
 			foreach (Card card in c.hand.Concat(s.deck).Concat(c.discard)) {
-				if (card is CoffeeBreakCard) c.QueueImmediate(new AExhaustOtherCard {
+				if (card is CoffeeBreakCard) c.QueueImmediate(new AExhaustOtherCardFr {
 					uuid = card.uuid
 				});
 			}
@@ -43,7 +67,7 @@ public class AGoCampanella : DynamicWidthCardAction
 	}
 
 	public override List<Tooltip> GetTooltips(State s) {
-		if (s.route is Combat combat && !CampanellaManager.IsCampanellaAllowed(s, combat)) {
+		if (s.route is Combat combat && CampanellaManager.CampanellaAllowedCount(s, combat) == 0) {
 			foreach (StuffBase value in combat.stuff.Values)
 			{
 				if (value is Campanella)
@@ -58,7 +82,6 @@ public class AGoCampanella : DynamicWidthCardAction
 			if (part.type == PType.missiles && part.active)
 			{
 				part.hilight = true;
-				break;
 			}
 		}
 

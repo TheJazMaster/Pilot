@@ -954,10 +954,10 @@ internal sealed class RunAndGunCard : Card, IPilotCard, IHasCustomCardTraits
 	}
 
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state) =>
-		upgrade == Upgrade.A ? new HashSet<ICardTraitEntry> { CherryPickedManager.CherryPickedTrait } : [];
+		new HashSet<ICardTraitEntry> { CherryPickedManager.CherryPickedTrait };
 
 	public override CardData GetData(State state) => new() {
-		cost = 3,
+		cost = upgrade == Upgrade.A ? 2 : 3,
 		exhaust = true,
 		artTint = "ffffff"
 	};
@@ -1024,10 +1024,9 @@ internal sealed class PilotExeCard : Card, IPilotCard
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.PilotDeck,
+				deck = Deck.colorless,
 				rarity = Rarity.common,
-				upgradesTo = [Upgrade.A, Upgrade.B],
-				dontOffer = true
+				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = ModEntry.Instance.CoffeeBreakCardArt,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", CardName, "name"]).Localize

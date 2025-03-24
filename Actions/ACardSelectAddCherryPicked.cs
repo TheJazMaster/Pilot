@@ -1,7 +1,7 @@
 using Nickel;
 using TheJazMaster.Pilot.Features;
 
-namespace TheJazMaster.Pilot;
+namespace TheJazMaster.Pilot.Actions;
 
 public class ACardSelectAddCherryPicked : CardAction
 {
@@ -15,7 +15,7 @@ public class ACardSelectAddCherryPicked : CardAction
 			return new CustomShowCards
 			{
 				message = ModEntry.Instance.Localizations.Localize(["action", "addCherryPicked", "showCardText"]),
-				cardIds = [ selectedCard.uuid ]
+				cardIds = [selectedCard.uuid]
 			};
 		}
 		return null;

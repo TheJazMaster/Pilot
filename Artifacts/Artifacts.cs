@@ -38,19 +38,25 @@ internal sealed class CaffeinePillArtifact : Artifact, IPilotArtifact
 				targetPlayer = true,
 				artifactPulse = Key()
 			});
+		}
+	}
+
+	public override void AfterPlayerStatusAction(State state, Combat combat, Status status, AStatusMode mode, int statusAmount)
+	{
+		if (status == ModEntry.Instance.CoffeeStatus && statusAmount > 0 && mode == AStatusMode.Add) {
 			combat.QueueImmediate(new AStatus
 			{
-				status = ModEntry.Instance.SwerveStatus,
+				status = ModEntry.Instance.PShieldStatus,
 				statusAmount = 1,
 				targetPlayer = true,
 				artifactPulse = Key()
 			});
 		}
 	}
-
+	
 	public override List<Tooltip>? GetExtraTooltips() => [
 		.. StatusMeta.GetTooltips(ModEntry.Instance.CoffeeStatus, 1),
-		.. StatusMeta.GetTooltips(ModEntry.Instance.SwerveStatus, 1)
+		.. StatusMeta.GetTooltips(ModEntry.Instance.PShieldStatus, 1)
 	];
 }
 

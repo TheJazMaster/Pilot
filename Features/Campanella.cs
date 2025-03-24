@@ -44,19 +44,22 @@ static class CampanellaManager
 		return GetCampanellasSwerveDistance(s.ship);
 	}
 
-	public static bool IsCampanellaAllowed(State s, Combat c) {
+	public static int CampanellaAllowedCount(State s, Combat c) {
 		int max = 1;
 		if (s.EnumerateAllArtifacts().Any(item => item is IsabellArtifact)) max++;
 
-		return max - c.stuff.Where(thing => thing.Value is Campanella).Count() > 0;
+		return max - c.stuff.Where(thing => thing.Value is Campanella).Count();
 	}
 
 	public static bool MoveCampanella(State s, Combat c, int xToMoveTo, bool blastIntruders = false, bool? targetPlayer = null, Campanella? campanella = null) {
 		List<Campanella> campanellas = campanella == null ? GetCampanellas(c, targetPlayer) : [campanella];
 
+		bool ret = false;
 		foreach (Campanella camp in campanellas) {
 			int x = xToMoveTo;
 			int oldX = camp.x;		
+			if (x == oldX) continue;
+			ret = true;
 			c.stuff.Remove(camp.x);
 			if (!blastIntruders)
 				while (c.stuff.ContainsKey(x)) {
@@ -88,7 +91,7 @@ static class CampanellaManager
 			}
 		}
 
-		return true;
+		return ret;
 	}
 
 	[HarmonyPostfix]
@@ -188,8 +191,8 @@ static class CampanellaManager
 [HarmonyPatch]
 public sealed class Campanella : StuffBase
 {
-	public Spr skin = ModEntry.Instance.CampanellaSprite;
-	public Spr bubbleSkin = ModEntry.Instance.CampanellaShield;
+	public bool altSkin = false;
+	public bool altBubbleSkin = false;
 	public Color color = new("fe626e");
 	private double particlesToEmit = 0;
 
@@ -297,7 +300,8 @@ public sealed class Campanella : StuffBase
 			});
 			particlesToEmit -= 1;
 		}
-		DrawWithHilight(g, skin, v + GetOffset(g), false, targetPlayer);
+		Spr sprite = altSkin ? ModEntry.Instance.Campanella2Sprite : ModEntry.Instance.CampanellaSprite;
+		DrawWithHilight(g, sprite, v + GetOffset(g), false, targetPlayer);
 	}
 
 	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
@@ -340,7 +344,8 @@ public sealed class Campanella : StuffBase
 		Box box = g.Push(null, rect);
 		Vec offset = GetOffset(g);
 		if (Invincible()) {
-			Draw.Sprite(bubbleSkin, box.rect.x - 5.0 + offset.x, box.rect.y + 3.0 + offset.y);
+			Spr sprite = altBubbleSkin ? ModEntry.Instance.Campanella2Shield : ModEntry.Instance.CampanellaShield;
+			Draw.Sprite(sprite, box.rect.x - 5.0 + offset.x, box.rect.y + 3.0 + offset.y);
 
 		}
 		if (g.state.ship.Get(ModEntry.Instance.SwerveStatus) > 0) {

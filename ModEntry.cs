@@ -8,6 +8,8 @@ using System.Linq;
 using TheJazMaster.Pilot.Cards;
 using TheJazMaster.Pilot.Artifacts;
 using TheJazMaster.Pilot.Features;
+using Nickel.Common;
+using TheJazMaster.Pilot.Actions;
 
 namespace TheJazMaster.Pilot;
 
@@ -132,6 +134,10 @@ public sealed class ModEntry : SimpleMod {
 		KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!;
 
         Harmony.PatchAll();
+
+		helper.ModRegistry.AwaitApi<IAppleShipyardApi>("APurpleApple.Shipyard", api => {
+			api.RegisterActionLooksForPartType(typeof(AGoCampanella), PType.missiles);
+		});
 
 		AnyLocalizations = new JsonLocalizationProvider(
 			tokenExtractor: new SimpleLocalizationTokenExtractor(),
@@ -316,21 +322,15 @@ public sealed class ModEntry : SimpleMod {
 
 	private ICharacterAnimationEntryV2 RegisterAnimation(IModHelper helper, string name)
     {
-        var files = Instance.Package.PackageRoot.GetRelative($"Sprites/Character").AsDirectory!.GetFilesRecursively()
-			.Where(f => f.Name.Contains($"Pilot{name}") && f.Name.EndsWith(".png"));
-
-		List<Spr> sprites = [];
-		if (files != null) {
-			foreach (IFileInfo file in files) {
-				sprites.Add(Instance.Helper.Content.Sprites.RegisterSprite(file).Sprite);
-			}
-		}
-		
-		return helper.Content.Characters.V2.RegisterCharacterAnimation(name, new()
+        return helper.Content.Characters.V2.RegisterCharacterAnimation(name, new()
 		{
 			CharacterType = PilotDeck.Key(),
 			LoopTag = name.ToLower(),
-			Frames = sprites
+			Frames = Enumerable.Range(0, 100)
+				.Select(i => Instance.Package.PackageRoot.GetRelativeFile($"Sprites/Character/Pilot{name}{i}.png"))
+				.TakeWhile(f => f.Exists)
+				.Select(f => helper.Content.Sprites.RegisterSprite(f).Sprite)
+				.ToList()
 		});
     }
 }

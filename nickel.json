@@ -1,7 +1,7 @@
 {
     "UniqueName": "TheJazMaster.Pilot",
     "DisplayName": "Pilot",
-    "Version": "1.0.2",
+    "Version": "1.0.9",
     "RequiredApiVersion": "0.1.0",
     "EntryPointAssembly": "Pilot.dll",
     "LoadPhase": "AfterDbInit",
